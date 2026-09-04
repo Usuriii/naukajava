@@ -7,22 +7,23 @@ public class BMICalc {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Podaj wage w kg");
-        double weight = scanner.nextDouble();
+        double weightInKg = scanner.nextDouble();
         System.out.println("Podaj wzrost w cm");
         double heightInCm = scanner.nextDouble();
         if (heightInCm < 30 || heightInCm > 250) {
             throw new IllegalArgumentException("Podany wzrost jest mniejszy niz 30cm lub wiekszy niz 250cm");
         }
-        double heightInM = heightInCm * 0.01;
-        double bmiCal = weight / (heightInM * heightInM);
-        System.out.println(String.format("%.2f", bmiCal));
+        double heightInM = heightInCm / 100;
+        double bmi = weightInKg / (heightInM * heightInM);
+        System.out.println(String.format("%.2f", bmi));
 
-        if (bmiCal < 18.5) System.out.println("Niedowaga");
-        else if (bmiCal > 18.5 && bmiCal < 24.9) {
+        if (bmi <= 18.50) {
+            System.out.println("Niedowaga");
+        } else if (bmi > 18.5 && bmi <= 25) {
             System.out.println("Norma");
-        } else if (bmiCal > 25 && bmiCal < 29.9) {
+        } else if (bmi > 25 && bmi < 30) {
             System.out.println("Nadwaga");
-        } else if (bmiCal >= 30) {
+        } else if (bmi >= 30) {
             System.out.println("Otyłość");
         }
     }

@@ -26,7 +26,7 @@ public class Leaderboard {
         players.sort(Comparator.comparing(Player::getSum).reversed());
 
         int bestMaxScore = getBestMaxScore(playersNumber, players);
-        leaderboard(playersNumber, players, bestMaxScore);
+        printLeaderBoard(playersNumber, players, bestMaxScore);
 
         scanner.close();
     }
@@ -58,7 +58,7 @@ public class Leaderboard {
      * @param players       is a list storing players.
      * @param bestMaxScore  is the best score among all players.
      */
-    private static void leaderboard(int playersNumber, List<Player> players, int bestMaxScore) {
+    private static void printLeaderBoard(int playersNumber, List<Player> players, int bestMaxScore) {
         System.out.println("Leaderboard: ");
         for (int i = 0; i < playersNumber; i++) {
             int ranking = 1;

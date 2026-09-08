@@ -34,7 +34,7 @@ public class Player {
     public int getSum() {
         int sum = 0;
         for (int i = 0; i < NUMBER_OF_SCORES; i++) {
-            sum = sum + scores.get(i);
+            sum += scores.get(i);
         }
         return sum;
     }
@@ -47,7 +47,7 @@ public class Player {
     public double getAverage() {
         double sum = 0;
         for (int i = 0; i < NUMBER_OF_SCORES; i++) {
-            sum = sum + scores.get(i);
+            sum += scores.get(i);
         }
         return sum / NUMBER_OF_SCORES;
     }

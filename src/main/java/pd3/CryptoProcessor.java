@@ -1,16 +1,13 @@
 package pd3;
 
 public class CryptoProcessor implements PaymentProcessor {
-    private static final double FEE = 0.02;
+    private static final double PERCENTAGE_FEE = 0.02;
+    private static final double CONSTANT_FEE = 10;
 
     @Override
     public PaymentStatus processPayment(double amount) {
-        if (amount <= 0 ) {
-            return PaymentStatus.FAILED;
-        } else {
-            System.out.println("Płatność krypto: " + amount + " PLN");
-            return PaymentStatus.SUCCESS;
-        }
+        System.out.println("Płatność krypto: " + amount + " PLN");
+        return PaymentStatus.SUCCESS;
     }
 
     @Override
@@ -20,8 +17,8 @@ public class CryptoProcessor implements PaymentProcessor {
     }
 
     @Override
-    public double getTransactionFee() {
-        return FEE;
+    public double getTransactionFee(double amount) {
+        return amount * PERCENTAGE_FEE + CONSTANT_FEE;
     }
 
     @Override

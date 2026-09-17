@@ -1,16 +1,12 @@
 package pd3;
 
 public class PayPalProcessor implements PaymentProcessor {
-    private static final double FEE = 0.01;
+    private static final double CONSTANT_FEE = 10.0;
 
     @Override
     public PaymentStatus processPayment(double amount) {
-        if (amount <= 0 ) {
-            return PaymentStatus.FAILED;
-        } else {
-            System.out.println("Płatność paypal: " + amount + " PLN");
-            return PaymentStatus.SUCCESS;
-        }
+        System.out.println("Płatność paypal: " + amount + " PLN");
+        return PaymentStatus.SUCCESS;
     }
 
     @Override
@@ -20,8 +16,8 @@ public class PayPalProcessor implements PaymentProcessor {
     }
 
     @Override
-    public double getTransactionFee() {
-        return FEE;
+    public double getTransactionFee(double amount) {
+        return CONSTANT_FEE;
     }
 
     @Override

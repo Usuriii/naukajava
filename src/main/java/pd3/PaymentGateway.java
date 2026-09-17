@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PaymentGateway {
-    private List<PaymentProcessor> paymentProcessor;
-    private List<Transaction> transactionHistory = new ArrayList<>();
+    private final List<PaymentProcessor> paymentProcessor;
+    private final List<Transaction> transactionHistory = new ArrayList<>();
 
     public PaymentGateway(List<PaymentProcessor> paymentProcessor) {
         this.paymentProcessor = new ArrayList<>(paymentProcessor);
@@ -23,27 +23,27 @@ public class PaymentGateway {
 
     public Transaction payment(double amount) {
         validate(amount);
-        PaymentProcessor bestProcessor = getBestProcessor();
+        PaymentProcessor bestProcessor = getBestProcessor(amount);
         PaymentStatus paymentStatus = bestProcessor.processPayment(amount);
         Transaction transaction = new Transaction(amount, bestProcessor.getName(), paymentStatus);
         transactionHistory.add(transaction);
         return transaction;
     }
 
-    public Transaction refund(double amount){
+    public Transaction refund(double amount) {
         validate(amount);
-        PaymentProcessor bestProcessor = getBestProcessor();
+        PaymentProcessor bestProcessor = getBestProcessor(amount);
         PaymentStatus refundStatus = bestProcessor.refund(amount);
         Transaction refundTransaction = new Transaction(amount, bestProcessor.getName(), refundStatus);
         transactionHistory.add(refundTransaction);
         return refundTransaction;
     }
 
-    private PaymentProcessor getBestProcessor() {
+    private PaymentProcessor getBestProcessor(double amount) {
         PaymentProcessor bestProcessor = paymentProcessor.get(0);
-        double lowestFee = bestProcessor.getTransactionFee();
+        double lowestFee = bestProcessor.getTransactionFee(amount);
         for (PaymentProcessor processor : paymentProcessor) {
-            double currentFee = processor.getTransactionFee();
+            double currentFee = processor.getTransactionFee(amount);
             if (currentFee < lowestFee) {
                 lowestFee = currentFee;
                 bestProcessor = processor;
@@ -51,8 +51,4 @@ public class PaymentGateway {
         }
         return bestProcessor;
     }
-
-
-
-
 }

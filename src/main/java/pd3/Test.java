@@ -12,11 +12,11 @@ public class Test {
 
         PaymentGateway paymentGateway = new PaymentGateway(processors);
 
-        Transaction payment = paymentGateway.payment(220);
-        System.out.println(payment.getProcessorName() + payment);
+        Transaction payment = paymentGateway.payment(320);
+        System.out.println(payment.getProcessorName() + payment + "\n");
 
         Transaction refund = paymentGateway.refund(200);
-        System.out.println(payment.getProcessorName() + refund);
+        System.out.println(refund.getProcessorName() + refund + "\n");
 
 
         System.out.println("Historia transakcji:");

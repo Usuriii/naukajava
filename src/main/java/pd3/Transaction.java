@@ -1,20 +1,14 @@
 package pd3;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 public class Transaction {
     private final double amount;
+    @Getter
     private final String processorName;
     private final PaymentStatus status;
-
-
-    public Transaction(double amount, String processorName, PaymentStatus status) {
-        this.amount = amount;
-        this.processorName = processorName;
-        this.status = status;
-    }
-
-    public String getProcessorName() {
-        return processorName;
-    }
 
     @Override
     public String toString() {

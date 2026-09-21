@@ -1,18 +1,17 @@
 package pd3;
 
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class PaymentGateway {
     private final List<PaymentProcessor> paymentProcessor;
+    @Getter
     private final List<Transaction> transactionHistory = new ArrayList<>();
 
     public PaymentGateway(List<PaymentProcessor> paymentProcessor) {
         this.paymentProcessor = new ArrayList<>(paymentProcessor);
-    }
-
-    public List<Transaction> getTransactionHistory() {
-        return transactionHistory;
     }
 
     private void validate(double amount) {

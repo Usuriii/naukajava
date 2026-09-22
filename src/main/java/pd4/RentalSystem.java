@@ -33,24 +33,31 @@ public class RentalSystem {
         this.rentals.add(rental);
     }
 
-    public void printRentalInfo() {
-        System.out.println("Typy wypożyczanych rzeczy: " + ResourceType.POWER_TOOLS + ", " + ResourceType.HEAVY_MACHINERY);
-        System.out.println("Ilość wypożyczeń o statusie active: " + rentalsNumberBasedOnStatus(RentalStatus.ACTIVE));
-        System.out.println("Ilość wypożyczeń o statusie returned: " + rentalsNumberBasedOnStatus(RentalStatus.RETURNED));
-        System.out.println("Suma cen wypożyczeń: " + calculateSumOfRentalsPrice() + " PLN\n");
-        System.out.println("Zasoby posortowane naturalnie według ceny bazowej:");
+    public void changeStatusToReturned(String idOfReturnedItem) {
+        for (Rental rental : rentals) {
+            if (rental.getResources().getId().equalsIgnoreCase(idOfReturnedItem)) {
+                rental.markAsReturned();
+            }
+        }
+    }
+
+    public RentalSummary getRentalSummary() {
+        int active = rentalsNumberBasedOnStatus(RentalStatus.ACTIVE);
+        int returned = rentalsNumberBasedOnStatus(RentalStatus.RETURNED);
+        double totalRentalCost = calculateSumOfRentalsPrice();
 
         List<Resources> resourcesList = rentals.stream()
                 .map(Rental::getResources)
                 .toList();
 
-        resourcesList.stream()
+        List<Resources> sortedByPrice = resourcesList.stream()
                 .sorted()
-                .forEach(resources -> System.out.println(resources.getName() + ": " + resources.getBasePrice()));
+                .toList();
 
-        System.out.println("\nZasoby posortowane według nazwy:");
-        resourcesList.stream()
+        List<Resources> sortedByName = resourcesList.stream()
                 .sorted(Comparator.comparing(Resources::getName))
-                .forEach(resources -> System.out.println(resources.getName() + ": " + resources.getBasePrice()));
+                .toList();
+
+        return new RentalSummary(active, returned, totalRentalCost, sortedByPrice, sortedByName);
     }
 }

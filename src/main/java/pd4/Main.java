@@ -5,6 +5,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         var system = RentalSystem.initialization();
+        RentalPrintInfo printInfo = new RentalPrintInfo();
 
         Resources impactDrill = new PowerTools("PT1", "Wiertarka udarowa", 50, ResourceType.POWER_TOOLS);
         Resources grinder = new PowerTools("PT2", "Szlifierrka kątowa", 40, ResourceType.POWER_TOOLS);
@@ -18,12 +19,14 @@ public class Main {
                 new Rental(concreteMixer, 1)
         );
 
-        rentals.get(3).setRentalStatus(RentalStatus.RETURNED);
-
         for (Rental rental : rentals) {
             system.addRentals(rental);
         }
 
-        system.printRentalInfo();
+        system.changeStatusToReturned("HM1");
+
+        RentalSummary summary = system.getRentalSummary();
+        printInfo.printSummary(summary);
+
     }
 }

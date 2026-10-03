@@ -1,8 +1,14 @@
 package pd6;
 
+import pd6.participants.Participant;
+import pd6.participants.Player;
+import pd6.participants.Team;
+import pd6.matchService.MatchResult;
+import pd6.matchService.TournamentSystem;
+
 public class Main {
     public static void main(String[] args) {
-        var tournament = TournamentSystem.initialization();
+        var tournament = TournamentSystem.initialize();
 
         Player p1 = new Player("Jacek");
         Player p2 = new Player("Magda");
@@ -22,7 +28,6 @@ public class Main {
 
         for (int i = 0; i < 3; i++) {
             MatchResult<Participant> matchResult = tournament.match(p1, t1);
-            tournament.saveResult(matchResult);
             System.out.println(matchResult);
         }
 

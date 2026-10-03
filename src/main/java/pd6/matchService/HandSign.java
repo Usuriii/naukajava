@@ -1,15 +1,18 @@
-package pd6;
+package pd6.matchService;
+
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+@Getter
 
 public enum HandSign {
     ROCK("kamień"),
     PAPER("papier"),
     SCISSORS("nożyczki");
 
-    final String description;
-
-    HandSign(String description) {
-        this.description = description;
-    }
+    private final String description;
 
     boolean canBeat(HandSign option) {
         if (this == option) {

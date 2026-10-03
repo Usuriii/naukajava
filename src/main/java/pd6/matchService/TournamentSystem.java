@@ -1,4 +1,6 @@
-package pd6;
+package pd6.matchService;
+
+import pd6.participants.Participant;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -7,9 +9,9 @@ public class TournamentSystem<T extends Participant> {
     private final Random random = new Random();
 
     private final Map<T, Integer> participants = new HashMap<>();
-    private final List<MatchResult> matchResults = new ArrayList<>();
+    private final List<MatchResult<T>> matchResults = new ArrayList<>();
 
-    public static TournamentSystem<Participant> initialization() {
+    public static TournamentSystem<Participant> initialize() {
         return new TournamentSystem<>();
     }
 
@@ -29,20 +31,21 @@ public class TournamentSystem<T extends Participant> {
         HandSign p2Sign = HandSign.values()[random.nextInt(3)];
 
         if (p1Sign == p2Sign) {
-            return MatchResult.of(playerOne, playerTwo, Optional.empty(), p1Sign, p2Sign);
+            return saveResult(MatchResult.of(playerOne, playerTwo, Optional.empty(), p1Sign, p2Sign));
         } else if (p1Sign.canBeat(p2Sign)) {
-            return MatchResult.of(playerOne, playerTwo, Optional.of(playerOne), p1Sign, p2Sign);
+            return saveResult(MatchResult.of(playerOne, playerTwo, Optional.of(playerOne), p1Sign, p2Sign));
         } else {
-            return MatchResult.of(playerOne, playerTwo, Optional.of(playerTwo), p1Sign, p2Sign);
+            return saveResult(MatchResult.of(playerOne, playerTwo, Optional.of(playerTwo), p1Sign, p2Sign));
         }
+
     }
 
-    public void saveResult(MatchResult<T> result) {
+    private MatchResult<T> saveResult(MatchResult<T> result) {
         if (result == null) {
             throw new IllegalArgumentException("Wynik meczu nie może być nullem");
         }
-        T playerOne = result.getPlayerOne();
-        T playerTwo = result.getPlayerTwo();
+        T playerOne = result.getFirstParticipant();
+        T playerTwo = result.getSecondParticipant();
         Optional<T> winner = result.getWinner();
 
         if (winner.isEmpty()) {
@@ -55,6 +58,7 @@ public class TournamentSystem<T extends Participant> {
         }
 
         matchResults.add(result);
+        return result;
     }
 
     private void addPointsToPlayer(T player, int pointsToAdd) {
@@ -66,11 +70,15 @@ public class TournamentSystem<T extends Participant> {
         participants.put(player, getPoints + pointsToAdd);
     }
 
-    public List<Map.Entry<T, Integer>> getParticipantsSortedByPoints() {
-        return List.copyOf(participants.entrySet()
+    public Map<T, Integer> getParticipantsSortedByPoints() {
+        Map<T, Integer> sortedMap = new LinkedHashMap<>();
+
+        participants.entrySet()
                 .stream()
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                .toList());
+                .forEachOrdered(entry -> sortedMap.put(entry.getKey(), entry.getValue()));
+
+        return Collections.unmodifiableMap(sortedMap);
     }
 
     public <T extends Participant> Map<T, Integer> getAllParticipantsOfType(Class<T> type) {

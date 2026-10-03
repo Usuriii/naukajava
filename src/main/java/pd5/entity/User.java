@@ -1,4 +1,4 @@
-package pd5;
+package pd5.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,12 +9,7 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @ToString
-public class User implements Entity<Long> {
+public class User implements Identifiable<Long> {
     private String name;
     private final Long id;
-
-    @Override
-    public Long getId() {
-        return id;
-    }
 }

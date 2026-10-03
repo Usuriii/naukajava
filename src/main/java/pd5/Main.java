@@ -1,9 +1,14 @@
 package pd5;
 
+import pd5.entity.Product;
+import pd5.entity.User;
+import pd5.service.ProductService;
+import pd5.service.UserService;
+
 public class Main {
     public static void main(String[] args) {
-        var userService = UserService.inicialization();
-        var productService = ProductService.inicialization();
+        var userService = UserService.initialize();
+        var productService = ProductService.initialize();
 
         userService.addUser(new User("Jacek", 12L));
         userService.addUser(new User("Karol", 1L));

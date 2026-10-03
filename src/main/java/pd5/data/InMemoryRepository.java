@@ -1,12 +1,14 @@
-package pd5;
+package pd5.data;
+
+import pd5.entity.Identifiable;
 
 import java.util.*;
 
-public class EntityStorage<K, V extends Entity<K>> implements EntityManager<K, V> {
+public class InMemoryRepository<K, V extends Identifiable<K>> implements Repository<K, V> {
     private final Map<K, V> entityStorage = new HashMap<>();
 
     @Override
-    public void addEntity(V entity) {
+    public void save(V entity) {
         if (entity == null) {
             throw new NullPointerException("Entity nie może być nullem");
         } else {
@@ -15,22 +17,22 @@ public class EntityStorage<K, V extends Entity<K>> implements EntityManager<K, V
     }
 
     @Override
-    public Optional<V> searchEntity(K id) {
+    public Optional<V> findById(K id) {
         return Optional.ofNullable(entityStorage.get(id));
     }
 
     @Override
-    public void deleteEntity(K id) {
+    public void deleteById(K id) {
         if (!entityStorage.containsKey(id)) {
-            throw new IllegalArgumentException("Brak przypisanej wartości do podanego ID: " + id);
+            throw new IllegalArgumentException("Nie znaleziono entity ID: " + id);
         } else {
             entityStorage.remove(id);
-            System.out.println("Usunięto użytkownika o id: " + id);
+            System.out.println("Usunięto encje o id: " + id);
         }
     }
 
     @Override
-    public Collection<V> getAllEntities() {
+    public Collection<V> getAll() {
         return entityStorage.values();
     }
 }

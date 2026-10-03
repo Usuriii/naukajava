@@ -1,4 +1,4 @@
-package pd5;
+package pd5.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,12 +9,7 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @ToString
-public class Product implements Entity<String> {
+public class Product implements Identifiable<String> {
     private String name;
     private final String id;
-
-    @Override
-    public String getId() {
-        return id;
-    }
 }

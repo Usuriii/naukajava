@@ -1,4 +1,4 @@
-package pd3;
+package pd3.service;
 
 public enum PaymentStatus {
     SUCCESS,

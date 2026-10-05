@@ -1,4 +1,4 @@
-package pd4;
+package pd4.rentals;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

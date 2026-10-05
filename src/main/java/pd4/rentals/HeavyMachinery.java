@@ -1,4 +1,4 @@
-package pd4;
+package pd4.rentals;
 
 public final class HeavyMachinery extends Resources {
     private final double fuelLevelAtPickupInL;

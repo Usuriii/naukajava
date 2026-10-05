@@ -1,4 +1,4 @@
-package pd4;
+package pd4.rentals;
 
 public final class PowerTools extends Resources {
     private static final double WEAR_AND_TEAR_FEE_PERCENTAGE = 0.1;

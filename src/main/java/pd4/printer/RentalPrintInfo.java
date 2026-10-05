@@ -1,4 +1,6 @@
-package pd4;
+package pd4.printer;
+
+import pd4.rentals.ResourceType;
 
 public class RentalPrintInfo {
 

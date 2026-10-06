@@ -1,4 +1,4 @@
-package pd6.matchService;
+package pd6.match;
 
 import lombok.AccessLevel;
 import lombok.Getter;

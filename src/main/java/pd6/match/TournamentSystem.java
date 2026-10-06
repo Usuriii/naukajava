@@ -1,6 +1,6 @@
-package pd6.matchService;
+package pd6.match;
 
-import pd6.participants.Participant;
+import pd6.participant.Participant;
 
 import java.util.*;
 import java.util.stream.Collectors;

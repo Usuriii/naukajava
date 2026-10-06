@@ -1,4 +1,4 @@
-package pd6.participants;
+package pd6.participant;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,6 +7,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @Getter
-public class Player implements Participant {
+public class Team implements Participant {
     private String name;
 }

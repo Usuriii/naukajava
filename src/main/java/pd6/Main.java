@@ -1,10 +1,10 @@
 package pd6;
 
-import pd6.participants.Participant;
-import pd6.participants.Player;
-import pd6.participants.Team;
-import pd6.matchService.MatchResult;
-import pd6.matchService.TournamentSystem;
+import pd6.participant.Participant;
+import pd6.participant.Player;
+import pd6.participant.Team;
+import pd6.match.MatchResult;
+import pd6.match.TournamentSystem;
 
 public class Main {
     public static void main(String[] args) {

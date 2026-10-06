@@ -3,7 +3,7 @@ package pd5.service;
 import lombok.RequiredArgsConstructor;
 import pd5.data.InMemoryRepository;
 import pd5.data.Repository;
-import pd5.entity.Product;
+import pd5.model.Product;
 
 import java.util.Collection;
 

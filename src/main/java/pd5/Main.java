@@ -1,7 +1,7 @@
 package pd5;
 
-import pd5.entity.Product;
-import pd5.entity.User;
+import pd5.model.Product;
+import pd5.model.User;
 import pd5.service.ProductService;
 import pd5.service.UserService;
 

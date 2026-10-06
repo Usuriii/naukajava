@@ -1,6 +1,6 @@
 package pd5.data;
 
-import pd5.entity.Identifiable;
+import pd5.model.Identifiable;
 
 import java.util.Collection;
 import java.util.Optional;

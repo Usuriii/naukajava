@@ -1,4 +1,4 @@
-package pd5.entity;
+package pd5.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @ToString
-public class User implements Identifiable<Long> {
+public class Product implements Identifiable<String> {
     private String name;
-    private final Long id;
+    private final String id;
 }

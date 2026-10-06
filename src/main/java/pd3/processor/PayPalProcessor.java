@@ -1,6 +1,6 @@
 package pd3.processor;
 
-import pd3.service.PaymentStatus;
+import pd3.model.PaymentStatus;
 
 public class PayPalProcessor implements PaymentProcessor {
     private static final double CONSTANT_FEE = 10.0;

@@ -5,7 +5,7 @@ import pd3.processor.CryptoProcessor;
 import pd3.processor.PayPalProcessor;
 import pd3.processor.PaymentProcessor;
 import pd3.service.PaymentGateway;
-import pd3.service.Transaction;
+import pd3.model.Transaction;
 
 import java.util.ArrayList;
 import java.util.List;

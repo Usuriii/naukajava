@@ -1,6 +1,8 @@
 package pd3.service;
 
 import lombok.Getter;
+import pd3.model.PaymentStatus;
+import pd3.model.Transaction;
 import pd3.processor.PaymentProcessor;
 
 import java.util.ArrayList;

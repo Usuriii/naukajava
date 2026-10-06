@@ -1,6 +1,6 @@
 package pd3.processor;
 
-import pd3.service.PaymentStatus;
+import pd3.model.PaymentStatus;
 
 public class CreditCardProcessor implements PaymentProcessor {
     private static final double PERCENTAGE_FEE = 0.05;

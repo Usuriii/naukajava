@@ -1,6 +1,6 @@
-package pd4.printer;
+package pd4.cli;
 
-import pd4.rentals.ResourceType;
+import pd4.model.enums.ResourceType;
 
 public class RentalPrintInfo {
 

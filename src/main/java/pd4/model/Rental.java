@@ -1,7 +1,8 @@
-package pd4.rentals;
+package pd4.model;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import pd4.model.enums.RentalStatus;
 
 @RequiredArgsConstructor
 @Getter

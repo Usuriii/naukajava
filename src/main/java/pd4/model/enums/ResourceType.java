@@ -1,4 +1,4 @@
-package pd4.rentals;
+package pd4.model.enums;
 
 import lombok.RequiredArgsConstructor;
 

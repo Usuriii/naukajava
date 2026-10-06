@@ -1,7 +1,8 @@
-package pd4.rentals;
+package pd4.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import pd4.model.enums.ResourceType;
 
 @AllArgsConstructor
 @Getter

@@ -1,4 +1,6 @@
-package pd4.rentals;
+package pd4.model;
+
+import pd4.model.enums.ResourceType;
 
 public final class HeavyMachinery extends Resources {
     private final double fuelLevelAtPickupInL;

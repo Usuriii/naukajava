@@ -1,6 +1,6 @@
-package pd4.printer;
+package pd4.cli;
 
-import pd4.rentals.Resources;
+import pd4.model.Resources;
 
 import java.util.List;
 

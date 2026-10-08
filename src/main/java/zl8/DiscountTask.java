@@ -40,36 +40,11 @@ public class DiscountTask {
     }
 
     private static final Predicate<User> LOYALTY_PROGRAM_QUALIFIER =
-            user -> user.getLoyaltyPoints()>= 1000;
+            user -> user.getLoyaltyPoints() >= 1000;
 
     // LEGACY CODE DO PRZEPISANIA
     public static String resolveDiscountCode(User user) {
-//        if (user == null) {
-//            return "DEFAULT10";
-//        }
-//
-//
-//        Subscription subscription = user.getSubscription();
-//        if (subscription != null && subscription.isActive()) {
-//            Optional<String> normalizedSubscriptionCode = normalizeCode(subscription.getDiscountCode());
-//            if (normalizedSubscriptionCode.isPresent()) {
-//                return normalizedSubscriptionCode.get();
-//            }
-//        }
-//
-//        ReferralProgram referralProgram = user.getReferralProgram();
-//        if (referralProgram != null && referralProgram.isEnabled()) {
-//            Optional<String> normalizedReferralCode = normalizeCode(referralProgram.getReferralCode());
-//            if (normalizedReferralCode.isPresent()) {
-//                return normalizedReferralCode.get();
-//            }
-//        }
-//
-//        if (user.getLoyaltyPoints() >= 1000) {
-//            return "LOYAL20";
-//        }
-//
-//        return "DEFAULT10";
+
         return Optional.ofNullable(user)
                 .map(User::getSubscription)
                 .filter(Subscription::isActive)
@@ -84,10 +59,6 @@ public class DiscountTask {
                         .filter(LOYALTY_PROGRAM_QUALIFIER)
                         .map(points -> "LOYAL20"))
                 .orElse("DEFAULT10");
-
-
-
-
     }
 
     private static Optional<String> normalizeCode(String code) {

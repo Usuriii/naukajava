@@ -1,6 +1,10 @@
-package pd4;
+package pd4.service;
 
 import lombok.AllArgsConstructor;
+import pd4.cli.RentalSummary;
+import pd4.model.Rental;
+import pd4.model.enums.RentalStatus;
+import pd4.model.Resources;
 
 import java.util.ArrayList;
 

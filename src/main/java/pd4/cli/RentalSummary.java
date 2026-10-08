@@ -1,4 +1,6 @@
-package pd4;
+package pd4.cli;
+
+import pd4.model.Resources;
 
 import java.util.List;
 

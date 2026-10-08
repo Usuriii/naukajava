@@ -1,5 +1,14 @@
 package pd4;
 
+import pd4.cli.RentalPrintInfo;
+import pd4.cli.RentalSummary;
+import pd4.model.HeavyMachinery;
+import pd4.model.PowerTools;
+import pd4.model.Resources;
+import pd4.model.Rental;
+import pd4.service.RentalSystem;
+import pd4.model.enums.ResourceType;
+
 import java.util.List;
 
 public class Main {

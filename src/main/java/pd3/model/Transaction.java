@@ -1,4 +1,4 @@
-package pd3;
+package pd3.model;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

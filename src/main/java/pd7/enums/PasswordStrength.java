@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public enum PasswordStrength {
-    WEAK("Password is does not meet the requirements."),
+    WEAK("Password does not meet the requirements."),
     OK("Password is correct."),
     STRONG("Password is strong.");
 

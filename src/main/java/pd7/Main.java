@@ -18,7 +18,6 @@ public class Main {
             System.out.println("1. Rejestracja użytkownika");
             System.out.println("2. Wyświetl użytkowników");
             System.out.println("3. Wyjście");
-
             String option = scanner.nextLine();
 
             switch (option) {
@@ -42,12 +41,9 @@ public class Main {
                         System.out.println("Podaj email [wzorzec x@y.z]:");
                         try {
                             email = scanner.nextLine().toLowerCase();
-
                             InputValidation.emailValidate(email);
                             UserRegistrationService.emailDuplicateValid(email);
-
                             isEmailValid = true;
-
                         } catch (ValidationException | DuplicateEmailException e) {
                             System.err.println(e.getMessage());
                         }
@@ -58,9 +54,7 @@ public class Main {
                     while (!isPasswordValid) {
                         System.out.println("Podaj hasło [min 8 znaków, wielka litera, cyfra, znak specjalny]: ");
                         password = scanner.nextLine();
-
                         PasswordStrength passwordStrength = InputValidation.validatePassword(password);
-
                         if (passwordStrength == PasswordStrength.WEAK) {
                             System.err.println(PasswordStrength.WEAK.getDescription());
                         } else if (passwordStrength == PasswordStrength.STRONG) {
@@ -71,10 +65,8 @@ public class Main {
                             isPasswordValid = true;
                         }
                     }
-
                     UserRegistrationService.registerUser(name, email, password);
                     UserRegistrationService.printUsers();
-
                 }
 
                 case "2" -> UserRegistrationService.printUsers();

@@ -9,31 +9,27 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class UserRegistrationService {
-
     private static final Map<String, User> emailsContainer = new HashMap<>();
 
     public static void registerUser(String name, String email, String password) {
-
-        String emailToLowerCase = email.toLowerCase();
+        String normalizedEmail = email.trim().toLowerCase();
+        String normalizedName = name.trim();
 
         InputValidation.nameValidate(name);
-
         InputValidation.emailValidate(email);
-
-        emailDuplicateValid(emailToLowerCase);
+        emailDuplicateValid(normalizedEmail);
 
         if (InputValidation.validatePassword(password) == PasswordStrength.WEAK) {
             throw new WeakPasswordException(PasswordStrength.WEAK.getDescription());
         }
 
-        String hashedPassword = "hashed_" + password;
-
-        emailsContainer.put(email, new User(name, emailToLowerCase, hashedPassword));
+        emailsContainer.put(email, new User(normalizedName, normalizedEmail, password));
     }
 
-    public static void emailDuplicateValid(String emailToLowerCase) {
-        if (emailsContainer.containsKey(emailToLowerCase)) {
-            throw new DuplicateEmailException("This email already exists, please change the email.");
+    public static void emailDuplicateValid(String email) {
+        String normalizedEmail = email.trim().toLowerCase();
+        if (emailsContainer.containsKey(normalizedEmail)) {
+            throw new DuplicateEmailException();
         }
     }
 

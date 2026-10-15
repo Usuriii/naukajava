@@ -5,15 +5,15 @@ import java.math.RoundingMode;
 
 public class Main {
     public static void main(String[] args) {
-        Warehouse warehouse = new Warehouse();
-        addProducts(warehouse);
+        var initialize = Warehouse.initialize();
+        addProducts(initialize);
         System.out.println("Wyszukiwanie po kategorii:");
-        warehouse.findByCategory("Elektronika")
+        initialize.findByCategory("Elektronika")
                 .forEach(System.out::println);
         System.out.println("\nLista zasobów o niskim stanie:");
-        warehouse.getLowStockReport()
+        initialize.getLowStockReport()
                 .forEach(System.out::println);
-        warehouse.getCategoryStats()
+        initialize.getCategoryStats()
                 .forEach((category, stats) -> {
                     System.out.println("\nKategoria: " + category);
                     System.out.println("Ilość produktów: " + stats.getCount());
@@ -23,17 +23,17 @@ public class Main {
                     System.out.println("Maksymalna cena produktu: " + stats.getMax());
                 });
         System.out.println();
-        warehouse.exportSortedByPrice().forEach((price, products) -> {
+        initialize.exportSortedByPrice().forEach((price, products) -> {
             System.out.print("Cena: " + price + "zł - ");
             products.forEach(System.out::println);
         });
         System.out.println("\nUsunięcie produktu np Laptopa");
-        warehouse.removeProduct(15432L);
-        warehouse.findByCategory("Elektronika")
+        initialize.removeProduct(15432L);
+        initialize.findByCategory("Elektronika")
                 .forEach(System.out::println);
         System.out.println("\nZmiana ilości produktu np iphona przez co dołączy do listy zasobow o niskim stanie");
-        warehouse.updateQuantity(2341L, 1);
-        warehouse.getLowStockReport()
+        initialize.updateQuantity(2341L, 1);
+        initialize.getLowStockReport()
                 .forEach(System.out::println);
     }
 

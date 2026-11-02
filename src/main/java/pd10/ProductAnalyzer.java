@@ -12,7 +12,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class ProductAnalyzer {
+public final class ProductAnalyzer {
     public static void reportWithTopProductpPerCategory(List<Product> products) {
         products.stream()
                 .collect(Collectors.groupingBy(

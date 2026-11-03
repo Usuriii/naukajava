@@ -3,7 +3,7 @@ package pd11.service;
 import lombok.RequiredArgsConstructor;
 import pd11.data.InMemoryEmployeeRepository;
 import pd11.data.InMemoryTicketRepository;
-import pd11.enums.TicketStatus;
+import pd11.model.enums.TicketStatus;
 import pd11.model.Employee;
 import pd11.model.Identifable;
 import pd11.model.Ticket;

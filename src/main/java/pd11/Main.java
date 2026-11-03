@@ -2,8 +2,8 @@ package pd11;
 
 import pd11.data.InMemoryEmployeeRepository;
 import pd11.data.InMemoryTicketRepository;
-import pd11.enums.TicketCategory;
-import pd11.enums.TicketPriority;
+import pd11.model.enums.TicketCategory;
+import pd11.model.enums.TicketPriority;
 import pd11.model.Employee;
 import pd11.model.Ticket;
 import pd11.service.Report;

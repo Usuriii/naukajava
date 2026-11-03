@@ -1,4 +1,4 @@
-package pd11.enums;
+package pd11.model.enums;
 
 public enum TicketCategory {
     PNEUMATIC,

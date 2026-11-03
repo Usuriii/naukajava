@@ -1,8 +1,8 @@
 package pd11.service;
 
-import pd11.enums.TicketCategory;
-import pd11.enums.TicketPriority;
-import pd11.enums.TicketStatus;
+import pd11.model.enums.TicketCategory;
+import pd11.model.enums.TicketPriority;
+import pd11.model.enums.TicketStatus;
 import pd11.model.Ticket;
 
 import java.util.function.Predicate;

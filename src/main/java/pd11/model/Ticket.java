@@ -2,9 +2,9 @@ package pd11.model;
 
 import lombok.Getter;
 import lombok.ToString;
-import pd11.enums.TicketCategory;
-import pd11.enums.TicketPriority;
-import pd11.enums.TicketStatus;
+import pd11.model.enums.TicketCategory;
+import pd11.model.enums.TicketPriority;
+import pd11.model.enums.TicketStatus;
 
 import java.util.Objects;
 

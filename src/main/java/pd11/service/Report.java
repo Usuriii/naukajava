@@ -2,8 +2,8 @@ package pd11.service;
 
 import lombok.RequiredArgsConstructor;
 import pd11.data.InMemoryTicketRepository;
-import pd11.enums.TicketPriority;
-import pd11.enums.TicketStatus;
+import pd11.model.enums.TicketPriority;
+import pd11.model.enums.TicketStatus;
 import pd11.model.Employee;
 import pd11.model.Ticket;
 

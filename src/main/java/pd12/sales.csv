@@ -1,0 +1,31 @@
+date,product_id,product_name,category,quantity,unit_price
+2026-11-01,P1001,Bezprzewodowa mysz,Elektronika,5,89.99
+2026-11-01,P1002,Klawiatura mechaniczna,Elektronika,2,249.50
+2026-11-01,P1003,Kawa ziarnista 1kg,Artykuły spożywcze,10,79.00
+2026-11-02,P1004,Biurko regulowane,Meble,1,1200.00
+2026-11-02,P1005,Krzesło biurowe,Meble,3,450.00
+2026-11-02,P1006,Bezprzewodowa mysz,Elektronika,1,89.99
+2026-11-03,P1007,Monitor 27 cali,Elektronika,2,899.00
+2026-11-03,P1008,Herbata zielona,Artykuły spożywcze,15,18.50
+2026-11-03,P1009,Słuchawki ANC,Elektronika,4,349.99
+2026-11-04,P1010,Lampa biurkowa LED,Oświetlenie,6,120.00
+2026-11-04,P1011,Podkładka pod mysz XXL,Akcesoria,8,59.00
+2026-11-04,P1012,Kawa ziarnista 1kg,Artykuły spożywcze,5,79.00
+2026-11-05,P1013,Kabel HDMI 2m,Elektronika,12,29.99
+2026-11-05,P1014,Hub USB-C,Elektronika,7,149.00
+2026-11-05,P1015,Krzesło biurowe,Meble,2,450.00
+2026-11-06,P1016,Organizer na biurko,Akcesoria,3,45.00
+2026-11-06,P1017,Dysk SSD 1TB,Elektronika,5,320.00
+2026-11-26,P1018,Herbata zielona,Artykuły spożywcze,20,18.50
+2026-11-07,P1019,Pendrive 64GB,Elektronika,15,35.00
+2026-11-07,P1020,Taśma LED RGB,Oświetlenie,4,75.50
+2026-11-07,P1021,Biurko regulowane,Meble,1,1200.00
+2026-11-08,P1022,Głośniki Bluetooth,Elektronika,3,199.99
+2026-11-08,P1023,Notes A5 w kratkę,Artykuły biurowe,25,12.00
+2026-11-08,P1024,Długopis żelowy czarny,Artykuły biurowe,50,3.50
+2026-11-09,P1025,Podnóżek ergonomiczny,Meble,2,180.00
+2026-11-09,P1026,Słuchawki ANC,Elektronika,1,349.99
+2026-11-09,P1027,Kabel HDMI 2m,Elektronika,8,29.99
+2026-11-10,P1028,Zewnętrzny napęd DVD,Elektronika,2,110.00
+2026-11-10,P1029,Segregator A4,Artykuły biurowe,10,15.00
+2026-11-10,P1030,Kawa ziarnista 1kg,Artykuły spożywcze,6,79.00

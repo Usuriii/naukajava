@@ -1,0 +1,5 @@
+{
+  "inputPath": "src/main/java/pd12/sales.csv",
+  "outputPath": "src/main/java/pd12/output",
+  "dateFormat": "yyyy.mm.dd"
+}

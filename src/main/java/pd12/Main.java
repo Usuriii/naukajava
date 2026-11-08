@@ -27,11 +27,13 @@ public class Main {
         objectMapper.registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule());
         objectMapper.writerWithDefaultPrettyPrinter().writeValue(outputPath.resolve("report.json").toFile(), products);
 
-        String totalAndAverage = ProductService.totalAndAverage(products).stream()
+        String totalAndAverage = ProductService.totalAndAverage(products).entrySet().stream()
                 .map(Objects::toString)
                 .collect(Collectors.joining("\n"));
 
         Files.writeString(outputPath.resolve("summary.csv"), totalAndAverage, StandardCharsets.UTF_8);
+
+        System.out.println( ProductService.dayWithHighestIncome(products));
     }
 
     public static List<Product> loadProducts(Path path) throws IOException {

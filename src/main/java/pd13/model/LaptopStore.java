@@ -1,22 +1,25 @@
 package pd13.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
-@AllArgsConstructor
+@NoArgsConstructor(staticName = "initialize")
 public class LaptopStore {
-    private int availableQuantity;
+    private int availableQuantity = 10;
 
-    public synchronized int purchase(Client client) {
-        int quantityToBuy = client.getQuantityToBuy();
+    public synchronized int getAvailableQuantity() {
+        return availableQuantity;
+    }
+
+    public synchronized void purchase(Order order) {
+        int quantityToBuy = order.getQuantityToBuy();
         if (quantityToBuy > availableQuantity) {
-            throw new IndexOutOfBoundsException(("Order " + client.getName()
+            throw new IllegalStateException(("Order " + order.getName()
                     + " - The requested quantity (" + quantityToBuy
                     + ") is unavailable or out of stock. Remaining: "
                     + availableQuantity));
         }
         availableQuantity -= quantityToBuy;
-        return availableQuantity;
     }
 }

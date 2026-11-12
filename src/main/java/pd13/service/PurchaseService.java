@@ -1,16 +1,21 @@
 package pd13.service;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-import pd13.model.Client;
+import lombok.RequiredArgsConstructor;
+import pd13.model.Order;
 import pd13.model.LaptopStore;
+import pd13.model.PurchaseResult;
 
 import java.util.concurrent.CompletableFuture;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@RequiredArgsConstructor(staticName = "initialize")
 public class PurchaseService {
+    private final LaptopStore laptopStore;
 
-    public static CompletableFuture<Integer> processPurchase(Client client, LaptopStore laptopStore) {
-        return CompletableFuture.supplyAsync(() -> laptopStore.purchase(client));
+    public CompletableFuture<PurchaseResult> processPurchase(Order order) {
+        return CompletableFuture.supplyAsync(() -> {
+            laptopStore.purchase(order);
+            int remaining = laptopStore.getAvailableQuantity();
+            return new PurchaseResult(order, remaining);
+        });
     }
 }

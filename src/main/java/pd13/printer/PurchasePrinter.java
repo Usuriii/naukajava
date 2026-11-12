@@ -1,18 +1,12 @@
 package pd13.printer;
 
-import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import pd13.model.Client;
-import pd13.model.LaptopStore;
-import pd13.service.PurchaseService;
+import pd13.model.PurchaseResult;
 
-import java.util.concurrent.CompletableFuture;
+@NoArgsConstructor(staticName = "initalize")
+public final class PurchasePrinter {
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class PurchasePrinter {
-
-    public static CompletableFuture<Void> printPurchase(Client client, LaptopStore laptopStore) {
-        return PurchaseService.processPurchase(client, laptopStore)
-                .thenAccept(value -> System.out.println("Kupiono " + client.getQuantityToBuy() + " laptopów. Pozostało na stanie " + value));
+    public void printPurchase(PurchaseResult result) {
+        System.out.println("Kupiono " + result.getOrder().getQuantityToBuy() + " laptopów. Pozostało na stanie " + result.getRemainingQuantity());
     }
 }

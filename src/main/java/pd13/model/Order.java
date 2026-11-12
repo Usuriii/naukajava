@@ -7,7 +7,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @ToString
-public class Client {
+public class Order {
     private String name;
     private int quantityToBuy;
 }

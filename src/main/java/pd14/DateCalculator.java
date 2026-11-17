@@ -28,8 +28,7 @@ public class DateCalculator {
     }
 
     public static ZonedDateTime convertTimezone (ZonedDateTime dt, String targetZone) {
-        ZoneId zoneId = ZoneId.of(targetZone);
-        return dt.withZoneSameInstant(zoneId);
+        return dt.withZoneSameInstant(ZoneId.of(targetZone));
     }
 
     public static String formatForLocale (LocalDateTime dt, String languageTag) {

@@ -4,12 +4,15 @@ import lombok.RequiredArgsConstructor;
 import pd15.domain.Book;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicLong;
 
 @RequiredArgsConstructor(staticName = "initialize")
 public class BookRepository implements Repository<Book> {
     private final Map<Long, Book> books = new HashMap<>();
+    private final AtomicLong id = new AtomicLong(0);
 
-    public void add(Book book) {
+    public void save(Book book) {
+        book.assignId(id.incrementAndGet());
         books.put(book.getId(), book);
     }
 

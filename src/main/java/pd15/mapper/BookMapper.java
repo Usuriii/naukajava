@@ -1,9 +1,12 @@
 package pd15.mapper;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import pd15.domain.Book;
 import pd15.dto.BookDto;
 
-public class BookMapper {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class BookMapper {
 
     public static BookDto toDto(Book book) {
         return new BookDto(

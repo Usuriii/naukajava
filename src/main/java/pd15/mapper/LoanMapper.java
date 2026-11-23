@@ -1,9 +1,12 @@
 package pd15.mapper;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import pd15.domain.Loan;
 import pd15.dto.LoanDto;
 
-public class LoanMapper {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class LoanMapper {
 
     public static LoanDto toDto(Loan loan) {
         return new LoanDto(
@@ -12,7 +15,8 @@ public class LoanMapper {
                 MemberMapper.toDto(loan.getMember()),
                 loan.getBorrowedAt(),
                 loan.getDueDate(),
-                loan.getReturnedAt()
+                loan.getReturnedAt(),
+                loan.getLoanStatus()
         );
     }
 }

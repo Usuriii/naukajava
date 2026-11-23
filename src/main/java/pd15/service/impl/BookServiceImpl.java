@@ -3,6 +3,7 @@ package pd15.service.impl;
 import lombok.RequiredArgsConstructor;
 import pd15.domain.Book;
 import pd15.dto.BookDto;
+import pd15.dto.CommandBookRequest;
 import pd15.mapper.BookMapper;
 import pd15.repository.BookRepository;
 import pd15.service.BookService;
@@ -15,17 +16,12 @@ public class BookServiceImpl implements BookService {
     private final BookRepository repository;
 
     @Override
-    public BookDto addBook(Book book) {
-        if (book == null) {
-            throw new IllegalArgumentException("Book cannot be null");
+    public BookDto addBook(CommandBookRequest request) {
+        if (repository.findByIsbn(request.isbn()).isPresent()) {
+            throw new IllegalStateException("Book with this ISBN already exist");
         }
-        if (repository.findById(book.getId()).isPresent()) {
-            throw new IllegalArgumentException("Book with this ID already exist");
-        }
-        if (repository.findById(book.getId()).isPresent()) {
-            throw new IllegalArgumentException("Book with this ISBN already exist");
-        }
-        repository.add(book);
+        Book book = new Book(request.isbn(), request.title(), request.author(), request.year(), request.availableCopies());
+        repository.save(book);
         return BookMapper.toDto(book);
     }
 

@@ -7,12 +7,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicLong;
 
 @RequiredArgsConstructor(staticName = "initialize")
 public class LoanRepository implements Repository<Loan> {
     private final Map<Long, Loan> loans = new HashMap<>();
+    private final AtomicLong id = new AtomicLong(0);
 
-    public void add(Loan loan) {
+    public void save(Loan loan) {
+        loan.assignId(id.incrementAndGet());
         loans.put(loan.getId(), loan);
     }
 

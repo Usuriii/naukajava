@@ -11,19 +11,18 @@ import java.util.List;
 @ToString
 public class Member {
     private static final String EMAIL_STRUCTURE = ("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
-    private final Long id;
+    private Long id;
     private final String name;
     private final String email;
     private final List<Loan> loans = new ArrayList<>();
 
-    public Member(Long id, String name, String email) {
-        this.id = id;
+    public Member(String name, String email) {
         this.name = name;
         this.email = email;
-        memberValidate();
+        validate();
     }
 
-    public boolean canBorrow() {
+    public boolean hasAvailableLoanLimit() {
         long count = loans.stream()
                 .filter(loan -> loan.getReturnedAt() == null)
                 .count();
@@ -34,10 +33,11 @@ public class Member {
         loans.add(loan);
     }
 
-    private void memberValidate() {
-        if (id == null) {
-            throw new IllegalArgumentException("ID cannot be null");
-        }
+    public void assignId(Long id) {
+        this.id = id;
+    }
+
+    private void validate() {
         if (name.isBlank()) {
             throw new IllegalArgumentException("Name cannot be blank");
         }

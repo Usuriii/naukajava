@@ -2,13 +2,14 @@ package pd15.service;
 
 import pd15.domain.Book;
 import pd15.dto.BookDto;
+import pd15.dto.CommandBookRequest;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface BookService {
 
-    BookDto addBook(Book book);
+    BookDto addBook(CommandBookRequest request);
 
     Optional<BookDto> findByIsbn(String isbn);
 

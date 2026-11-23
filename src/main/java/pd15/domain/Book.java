@@ -10,26 +10,25 @@ import java.time.Year;
 @Getter
 @ToString
 public class Book {
-    private final Long id;
+    private Long id;
     private final String isbn;
     private final String title;
     private final String author;
     private final int year;
     private int availableCopies;
 
-    public Book(Long id, String isbn, String title, String author, int year, int availableCopies) {
-        this.id = id;
+    public Book(String isbn, String title, String author, int year, int availableCopies) {
         this.isbn = isbn;
         this.title = title;
         this.author = author;
         this.year = year;
         this.availableCopies = availableCopies;
-        bookValidate();
+        validate();
     }
 
     public void borrow() {
         if (availableCopies <= 0) {
-            throw new BookNotAvailableException("No books available for loan");
+            throw new BookNotAvailableException(isbn);
         }
         availableCopies -= 1;
     }
@@ -38,10 +37,11 @@ public class Book {
         availableCopies += 1;
     }
 
-    private void bookValidate() {
-        if (id == null) {
-            throw new IllegalArgumentException("ID cannot be null");
-        }
+    public void assignId(Long id) {
+        this.id = id;
+    }
+
+    private void validate() {
         if (isbn.isBlank()) {
             throw new IllegalArgumentException("Isbn cannot be blank");
         }

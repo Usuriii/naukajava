@@ -1,20 +1,21 @@
 package pd15.domain;
 
-
+import java.time.LocalDate;
 import lombok.Getter;
 import lombok.ToString;
 import pd15.domain.enums.LoanStatus;
 
-import java.time.LocalDate;
-
 @Getter
 @ToString
 public class Loan {
+
     private static final int MAX_LOAN_DURATION_DAYS = 14;
     private Long id;
     private final Book book;
+
     @ToString.Exclude
     private final Member member;
+
     private final LocalDate borrowedAt;
     private final LocalDate dueDate;
     private LocalDate returnedAt;

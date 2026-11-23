@@ -9,10 +9,6 @@ import pd15.dto.MemberDto;
 public final class MemberMapper {
 
     public static MemberDto toDto(Member member) {
-        return new MemberDto(
-                member.getId(),
-                member.getName(),
-                member.getEmail()
-        );
+        return new MemberDto(member.getId(), member.getName(), member.getEmail());
     }
 }

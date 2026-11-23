@@ -12,6 +12,7 @@ import pd15.service.impl.LoanServiceImpl;
 import pd15.service.impl.MemberServiceImpl;
 
 public class Main {
+
     public static void main(String[] args) {
         var bookRepo = BookRepository.initialize();
         var memberRepo = MemberRepository.initialize();
@@ -21,10 +22,34 @@ public class Main {
         var memberService = MemberServiceImpl.initialize(memberRepo);
         var loanService = LoanServiceImpl.initialize(loanRepo, bookRepo, memberRepo);
 
-        CommandBookRequest bookRequest = new CommandBookRequest("9788373271890", "Pan Tadeusz", "Adam Mickiewicz", 1834, 5);
-        CommandBookRequest bookRequest1 = new CommandBookRequest("9788373271920", "Dziady cz. III", "Adam Mickiewicz", 1832, 4);
-        CommandBookRequest bookRequest2 = new CommandBookRequest("9788373271944", "Quo vadis", "Henryk Sienkiewicz", 1896, 1);
-        CommandBookRequest bookRequest3 = new CommandBookRequest("9788373271951", "Kamienie na szaniec", "Aleksander Kamiński", 1943, 6);
+        CommandBookRequest bookRequest = new CommandBookRequest(
+            "9788373271890",
+            "Pan Tadeusz",
+            "Adam Mickiewicz",
+            1834,
+            5
+        );
+        CommandBookRequest bookRequest1 = new CommandBookRequest(
+            "9788373271920",
+            "Dziady cz. III",
+            "Adam Mickiewicz",
+            1832,
+            4
+        );
+        CommandBookRequest bookRequest2 = new CommandBookRequest(
+            "9788373271944",
+            "Quo vadis",
+            "Henryk Sienkiewicz",
+            1896,
+            1
+        );
+        CommandBookRequest bookRequest3 = new CommandBookRequest(
+            "9788373271951",
+            "Kamienie na szaniec",
+            "Aleksander Kamiński",
+            1943,
+            6
+        );
 
         bookService.addBook(bookRequest);
         bookService.addBook(bookRequest1);

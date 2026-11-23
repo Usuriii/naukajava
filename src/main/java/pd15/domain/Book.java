@@ -1,15 +1,14 @@
 package pd15.domain;
 
-
+import java.time.Year;
 import lombok.Getter;
 import lombok.ToString;
 import pd15.exceptions.BookNotAvailableException;
 
-import java.time.Year;
-
 @Getter
 @ToString
 public class Book {
+
     private Long id;
     private final String isbn;
     private final String title;

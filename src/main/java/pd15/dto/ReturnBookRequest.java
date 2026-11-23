@@ -1,4 +1,3 @@
 package pd15.dto;
 
-public record ReturnBookRequest(Long loanId) {
-}
+public record ReturnBookRequest(Long loanId) {}

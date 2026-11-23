@@ -1,15 +1,14 @@
 package pd15.domain;
 
-import lombok.Getter;
-import lombok.ToString;
-
 import java.util.ArrayList;
 import java.util.List;
-
+import lombok.Getter;
+import lombok.ToString;
 
 @Getter
 @ToString
 public class Member {
+
     private static final String EMAIL_STRUCTURE = ("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
     private Long id;
     private final String name;
@@ -23,9 +22,7 @@ public class Member {
     }
 
     public boolean hasAvailableLoanLimit() {
-        long count = loans.stream()
-                .filter(loan -> loan.getReturnedAt() == null)
-                .count();
+        long count = loans.stream().filter(loan -> loan.getReturnedAt() == null).count();
         return count < 3;
     }
 

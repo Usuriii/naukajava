@@ -1,5 +1,7 @@
 package pd15.service.impl;
 
+import java.time.LocalDate;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import pd15.domain.Book;
 import pd15.domain.Loan;
@@ -13,18 +15,18 @@ import pd15.repository.LoanRepository;
 import pd15.repository.MemberRepository;
 import pd15.service.LoanService;
 
-import java.time.LocalDate;
-import java.util.List;
-
 @RequiredArgsConstructor(staticName = "initialize")
 public class LoanServiceImpl implements LoanService {
+
     private final LoanRepository repository;
     private final BookRepository bookRepo;
     private final MemberRepository memberRepo;
 
     @Override
     public LoanDto borrow(CommandLoanRequest request) {
-        Member member = memberRepo.findById(request.memberId()).orElseThrow(() -> new MemberNotFoundException(request.memberId()));
+        Member member = memberRepo
+            .findById(request.memberId())
+            .orElseThrow(() -> new MemberNotFoundException(request.memberId()));
         Book book = bookRepo.findById(request.bookId()).orElseThrow(() -> new BookNotFoundException(request.bookId()));
 
         memberLoanLimitValidation(member);

@@ -1,5 +1,7 @@
 package pd15.service.impl;
 
+import java.util.List;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import pd15.domain.Book;
 import pd15.dto.BookDto;
@@ -8,11 +10,9 @@ import pd15.mapper.BookMapper;
 import pd15.repository.BookRepository;
 import pd15.service.BookService;
 
-import java.util.List;
-import java.util.Optional;
-
 @RequiredArgsConstructor(staticName = "initialize")
 public class BookServiceImpl implements BookService {
+
     private final BookRepository repository;
 
     @Override
@@ -20,7 +20,13 @@ public class BookServiceImpl implements BookService {
         if (repository.findByIsbn(request.isbn()).isPresent()) {
             throw new IllegalStateException("Book with this ISBN already exist");
         }
-        Book book = new Book(request.isbn(), request.title(), request.author(), request.year(), request.availableCopies());
+        Book book = new Book(
+            request.isbn(),
+            request.title(),
+            request.author(),
+            request.year(),
+            request.availableCopies()
+        );
         repository.save(book);
         return BookMapper.toDto(book);
     }
@@ -30,15 +36,12 @@ public class BookServiceImpl implements BookService {
         if (isbn == null || isbn.isBlank()) {
             throw new IllegalArgumentException("Isbn cannot be null or blank");
         }
-        return repository.findByIsbn(isbn)
-                .map(BookMapper::toDto);
+        return repository.findByIsbn(isbn).map(BookMapper::toDto);
     }
 
     @Override
     public List<BookDto> findAvailable() {
-        return repository.findAvailable().stream()
-                .map(BookMapper::toDto)
-                .toList();
+        return repository.findAvailable().stream().map(BookMapper::toDto).toList();
     }
 
     @Override
@@ -46,8 +49,6 @@ public class BookServiceImpl implements BookService {
         if (query == null || query.isBlank()) {
             throw new IllegalArgumentException("Query cannot be null or blank");
         }
-        return repository.search(query).stream()
-                .map(BookMapper::toDto)
-                .toList();
+        return repository.search(query).stream().map(BookMapper::toDto).toList();
     }
 }

@@ -1,16 +1,16 @@
 package pd15.repository;
 
-import lombok.RequiredArgsConstructor;
-import pd15.domain.Loan;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
+import lombok.RequiredArgsConstructor;
+import pd15.domain.Loan;
 
 @RequiredArgsConstructor(staticName = "initialize")
 public class LoanRepository implements Repository<Loan> {
+
     private final Map<Long, Loan> loans = new HashMap<>();
     private final AtomicLong id = new AtomicLong(0);
 
@@ -20,9 +20,7 @@ public class LoanRepository implements Repository<Loan> {
     }
 
     public List<Loan> findOverdue() {
-        return loans.values().stream()
-                .filter(Loan::isOverdue)
-                .toList();
+        return loans.values().stream().filter(Loan::isOverdue).toList();
     }
 
     @Override

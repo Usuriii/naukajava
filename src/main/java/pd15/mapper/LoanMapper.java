@@ -10,13 +10,13 @@ public final class LoanMapper {
 
     public static LoanDto toDto(Loan loan) {
         return new LoanDto(
-                loan.getId(),
-                BookMapper.toDto(loan.getBook()),
-                MemberMapper.toDto(loan.getMember()),
-                loan.getBorrowedAt(),
-                loan.getDueDate(),
-                loan.getReturnedAt(),
-                loan.getLoanStatus()
+            loan.getId(),
+            BookMapper.toDto(loan.getBook()),
+            MemberMapper.toDto(loan.getMember()),
+            loan.getBorrowedAt(),
+            loan.getDueDate(),
+            loan.getReturnedAt(),
+            loan.getLoanStatus()
         );
     }
 }

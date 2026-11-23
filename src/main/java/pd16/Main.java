@@ -1,32 +1,28 @@
 package pd16;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.IOException;
-//        PRACA DOMOWA PD-16 — API Gateway do zewnętrznych serwisów
-//
-//        Zbuduj "agregator danych" który pobiera informacje z 3 publicznych API (bez klucza):
-//
-//        JSONPlaceholder (https://jsonplaceholder.typicode.com/):
-//        GET /users/{id}  — dane użytkownika
-//        GET /users/{id}/todos — lista zadań
-//        GET /users/{id}/posts — lista postów
-//
-//        Open-Meteo (https://api.open-meteo.com/) — pogoda dla lokalizacji użytkownika
-//
-//        REST Countries (https://restcountries.com/v3.1/name/%7Bname%7D) — dane o kraju
-//
-//        Wymagania:
-//        a) Klasa ApiGateway z metodą getUserReport(Long userId) → UserReport ////////////////////////
-//        b) UserReport = user + todos (tylko incomplete) + posts (ostatnie 3) + pogoda /////////////////////
-//        c) Pobierz todos + posts + pogodę RÓWNOLEGLE przez sendAsync + CompletableFuture.allOf ////////////////
-//        d) Obsłuż błędy każdego API niezależnie — jeden failed API nie psuje całości ////////////
-//        e) Zmierz czas: pobieranie sekwencyjne vs równoległe (Instant.now())
+import java.net.http.HttpClient;
+
+import pd16.gateway.PostsGateway;
+import pd16.gateway.TodosGateway;
+import pd16.gateway.UserGateway;
+import pd16.gateway.WeatherGateway;
 
 public class Main {
+
     public static void main(String[] args) throws IOException, InterruptedException {
-        ApiGateway apiGateway = ApiGateway.initialize();
-        long start = System.nanoTime();
-        UserReport userReport = apiGateway.getUserReport(5L);
-        System.out.println(System.nanoTime() - start);
+        ObjectMapper objectMapper = new ObjectMapper();
+        HttpClient httpClient = HttpClient.newHttpClient();
+
+        UserGateway userGateway = new UserGateway(objectMapper, httpClient);
+        TodosGateway todosGateway = new TodosGateway(objectMapper, httpClient);
+        PostsGateway postsGateway = new PostsGateway(objectMapper, httpClient);
+        WeatherGateway weatherGateway = new WeatherGateway(objectMapper, httpClient);
+
+        var service = UserReportService.initialize(userGateway, todosGateway, postsGateway, weatherGateway);
+        UserReport userReport = service.getUserReport(5L);
         System.out.println("User:");
         System.out.println(userReport.getUser());
         System.out.println("Completed todos");

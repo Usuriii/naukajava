@@ -6,6 +6,7 @@ import lombok.ToString;
 @ToString
 @Getter
 public class Geo {
+
     String lat;
     String lng;
 }

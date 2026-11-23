@@ -9,6 +9,7 @@ import lombok.ToString;
 @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CurrentWeather {
+
     @JsonProperty("temperature_2m")
     private double temperature;
 }

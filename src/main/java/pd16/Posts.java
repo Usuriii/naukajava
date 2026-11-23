@@ -6,6 +6,7 @@ import lombok.ToString;
 @Getter
 @ToString
 public class Posts {
+
     int userId;
     int id;
     String title;

@@ -9,10 +9,13 @@ import lombok.ToString;
 @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Weather {
+
     @JsonProperty("latitude")
     private double latitude;
+
     @JsonProperty("longitude")
     private double longitude;
+
     @JsonProperty("current")
     private CurrentWeather current;
 }

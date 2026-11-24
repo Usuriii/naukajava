@@ -5,21 +5,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.net.http.HttpClient;
 
-import pd16.gateway.PostsGateway;
-import pd16.gateway.TodosGateway;
-import pd16.gateway.UserGateway;
-import pd16.gateway.WeatherGateway;
+import pd16.gateway.*;
 
 public class Main {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         ObjectMapper objectMapper = new ObjectMapper();
         HttpClient httpClient = HttpClient.newHttpClient();
+        ApiClient apiClient = new ApiClient(httpClient);
 
-        UserGateway userGateway = new UserGateway(objectMapper, httpClient);
-        TodosGateway todosGateway = new TodosGateway(objectMapper, httpClient);
-        PostsGateway postsGateway = new PostsGateway(objectMapper, httpClient);
-        WeatherGateway weatherGateway = new WeatherGateway(objectMapper, httpClient);
+        UserGateway userGateway = new UserGateway(objectMapper, apiClient);
+        TodosGateway todosGateway = new TodosGateway(objectMapper, apiClient);
+        PostsGateway postsGateway = new PostsGateway(objectMapper, apiClient);
+        WeatherGateway weatherGateway = new WeatherGateway(objectMapper, apiClient);
 
         var service = UserReportService.initialize(userGateway, todosGateway, postsGateway, weatherGateway);
         UserReport userReport = service.getUserReport(5L);
